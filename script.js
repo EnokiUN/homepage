@@ -88,6 +88,8 @@ const input = document.getElementById("search-bar");
 input.addEventListener("keyup", (e) => {
   query = e.target.value;
   refreshWebsites(query);
+  // TODO: finish search suggestions.
+  let request = new Request(`https://duckduckgo.com/ac/?q=${encoded}&format=list`);
   if (e.key == "Enter") {
     if (query.startsWith(":")) {
       var command = query.substring(1);
@@ -103,6 +105,7 @@ const commandHandler = (command) => {
   let [cmd, args] = command.split(" ", 2);
   cmd = cmd.toLowerCase();
   let encoded = null;
+  // TODO: Add more commands
   switch (cmd) {
     case "github":
     case "gh":
