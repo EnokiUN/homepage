@@ -25,11 +25,18 @@ body {
   font-family:      'Caskaydia Cove', sans-serif;
 }
 
-#clock {
+.clock {
   text-align:		left;
-  font-size:		72px;
   color:			var(--secondary);
   padding:		    10px;
+}
+
+#clock {
+  font-size:		72px;
+}
+
+#date {
+  font-size:		72px;
 }
 
 #search-bar {
@@ -70,8 +77,10 @@ body {
 }
 
 .danger {
-  color:            red;
+  color:            #ef4a4a;
+  font-size:        45px;
   font-weight:      bold;
+  display:          none;
 }
 
 #commands {
@@ -85,14 +94,21 @@ body {
 }
 
 #commands code {
-  margin:          5px;
+  white-space:     pre-wrap;
 }
 
 /* TODO: add more syntax highlighting types */
 ident {
   color:           red;
+  font-weight:     bold;
 }
 
 str {
   color:           green;
+  font-weight:     bold;
+}
+
+example {
+  color:           #2233ff;
+  font-weight:     bold;
 }

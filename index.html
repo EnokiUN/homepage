@@ -1,25 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-		<title>Home Page</title>
-		<meta charset="UTF-8"/>
-        <link href="style.css" rel="stylesheet" type="text/css">
-	</head>
-	<body>
-        <!-- TODO: add somethign fancy next to the clock -->
-		<div id="clock" class="clock"></div>
-		<br>
-        <input id="search-bar" type="text" name="q" maxlenght="255" placeholder="Search the Internet"/>
-		<br/><br/>
-        <div id="error" class="danger"></div>
-		<div id="website-collection" class="website-collection"></div>
-        <div id="commands">
-          <code>
-            <!-- TODO: Add command doccumentations -->
-            <ident>github / gh</ident>: opens a specific user/repo on github. example: gh EnokiUN/homepage
-          </code>
-        </div>
-        <!-- TODO: Add an anime girl at the bottom right -->
-        <script src="script.js"></script>
-    </body>
+  <head>
+    <title>Home Page</title>
+    <meta charset="UTF-8"/>
+    <link href="style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div class="clock"> It's <span id="date"></span> at <span id="clock"></span> o'clock. </div>
+    <br>
+    <input id="search-bar" type="text" name="q" maxlenght="255" placeholder="Search the Internet"/>
+    <br/><br/>
+    <!-- Fuck this line of code in particular, can't get the span and the image to work nicely so I had to make the text outragously huge. fml -->
+    <!-- Update: Removed the image for copyright purposes, rip -->
+    <div id="error" class="danger"></div>
+    <div id="website-collection" class="website-collection"></div>
+    <div id="commands">
+      <code>
+        <!-- TODO: Add command doccumentations -->
+        Command syntax: <str>:name argument(s)</str>
+        Any text highlighted in <example>blue</example> is an example.
+        Any text highlighted in <ident>red</ident> is a command name.
+        --------------------------------------------------
+        <ident>github</ident>, <ident>gh</ident>: Opens github or a specific user/repo on github if passed as an argument. <example>gh</example>, <example>gh EnokiUN</example>, <example>gh EnokiUN/homepage</example>
+        <ident>ghsearch</ident>: Opens the github search page or searches if a query was passed. <example>ghsearch</example>, <example>ghsearch manga</example>
+        <ident>youtube</ident>, <ident>yt</ident>: Opens youtube or searches if a query was passed. <example>yt</example>, <example>yt never gonna give you up</example>
+        <ident>subreddit</ident>, <ident>sub</ident>: Opens the reddit seach page or a subreddit if one was passed. <example>sub</example>, <example>sub unixporn</example>
+        <ident>reddit</ident>, <ident>rd</ident>: Opens reddit or searches if a query was passed. <example>rd</example>, <example>rd men of culture</example>
+
+        More commands added soon... hopefully.
+      </code>
+    </div>
+    <br><br><br>
+    <!-- TODO: Add an anime girl at the bottom right -->
+    <script src="script.js"></script>
+  </body>
 </html>

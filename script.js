@@ -68,19 +68,23 @@ const refreshWebsites = (query = "") => {
 };
 
 const showTime = () => {
-    let date = new Date();
-    let h = date.getHours();
-    let m = date.getMinutes();
-    let s = date.getSeconds();
+  let date = new Date();
+  let h = date.getHours();
+  let m = date.getMinutes();
+  let s = date.getSeconds();
 
-    if (s < 10) { s = `0${s}`; }
-    if (m < 10) { m = `0${m}`; }
+  if (s < 10) { s = `0${s}`; }
+  if (m < 10) { m = `0${m}`; }
 
-    let time = `${h}:${m}:${s}`;
-    let clock = document.getElementById("clock");
-    clock.innerText = time;
+  let time = `${h}:${m}:${s}`;
+  let clock = document.getElementById("clock");
+  clock.innerText = time;
 
-    setTimeout(showTime, 1000);
+  let date_text = `${date.toLocaleDateString("en-UK", { weekday: 'long' } )} ${date.getUTCDate()} ${date.toLocaleDateString("en-UK", { month: 'long' } )}`;
+  let date_element = document.getElementById("date");
+  date_element.innerText = date_text
+
+  setTimeout(showTime, 1000);
 };
 
 const input = document.getElementById("search-bar");
@@ -88,14 +92,12 @@ const input = document.getElementById("search-bar");
 input.addEventListener("keyup", (e) => {
   query = e.target.value;
   refreshWebsites(query);
-  // TODO: finish search suggestions.
-  let request = new Request(`https://duckduckgo.com/ac/?q=${encoded}&format=list`);
-  if (e.key == "Enter") {
+  // I have to check for "Go" to make it work on mobile.
+  if (e.key == "Enter" || e.key == "Go") {
     if (query.startsWith(":")) {
       var command = query.substring(1);
       commandHandler(command);
     } else {
-      let encoded = encodeURI(query);
       window.location.href = `https://duckduckgo.com/?q=${encoded}`;
     }
   }
@@ -133,9 +135,8 @@ const commandHandler = (command) => {
       break;
     case "subreddit":
     case "sub":
-    case "r/":
       if (args === undefined) {
-        window.location.href = "https://reddit.com";
+        window.location.href = "https://reddit.com/search";
         break;
       }
       window.location.href = `https://reddit.com/r/${args}`;
@@ -143,7 +144,7 @@ const commandHandler = (command) => {
     case "reddit":
     case "rd":
       if (args === undefined) {
-        window.location.href = "https://reddit.com/search";
+        window.location.href = "https://reddit.com";
         break;
       }
       encoded = encodeURI(args);
@@ -157,6 +158,9 @@ const commandHandler = (command) => {
 
 const showError = (error) => {
   let error_element = document.getElementById("error");
+  if (error_element.style.display === "") {
+    error_element.style.display = "block";
+  }
   error_element.innerText = error;
 };
 
