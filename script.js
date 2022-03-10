@@ -3,21 +3,14 @@ let data = `
 Github
 Github | https://github.com/
 Pycord | https://github.com/Pycord-Development/pycord/
-PSUP | https://github.com/EnokiUN/psup/
-Rich | https://github.com/Textualize/rich/
+Homepage | https://github.com/EnokiUN/homepage/
 ---
 Docs
 Arch Wiki | https://wiki.archlinux.org/
 Python | https://docs.python.org/
 Rust | https://docs.rust-lang.org/
-Pycord | https://docs.pycord.dev/
 Typescript | https://typescriptlang.org/docs/
 MDN | https://developer.mozilla.org/en-US/
-Django | https://docs.djangoproject.com/
-Pycord (Guide) | https://namantech.me/pycord/
-Qtile | http://docs.qtile.org/
-Oh My Zsh | https://github.com/ohmyzsh/ohmyzsh/
-Vim | https://vim.org/docs.php
 ---
 Entertainment
 Youtube | https://youtube.com/
@@ -105,6 +98,7 @@ input.addEventListener("keyup", (e) => {
 
 const commandHandler = (command) => {
   let [cmd, args] = command.split(" ", 2);
+  console.log(command, cmd, args);
   cmd = cmd.toLowerCase();
   let encoded = null;
   // TODO: Add more commands
