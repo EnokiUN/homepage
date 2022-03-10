@@ -97,8 +97,9 @@ input.addEventListener("keyup", (e) => {
 });
 
 const commandHandler = (command) => {
-  let [cmd, args] = command.split(" ", 2);
-  console.log(command, cmd, args);
+  let idx = command.indexOf(" ");
+  let cmd = command.substring(0, idx);
+  let args = command.substring(idx + 1);
   cmd = cmd.toLowerCase();
   let encoded = null;
   // TODO: Add more commands
