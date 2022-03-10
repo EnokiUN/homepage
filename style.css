@@ -1,0 +1,70 @@
+:root {
+  --main:           #0c0912;
+  --secondary:		#e566ff;
+  --text:			#ffffff;
+  --link-colour:    #fc35bc;
+  --complimentary:	#120e1c;
+  --link-hover:		#6824af;
+}
+
+::placeholder {
+  opacity: 		    0.5;
+}
+
+@font-face {
+  font-family:      'Caskaydia Cove';
+  src:              url('font.ttf');
+}
+
+body {
+  background-color: var(--main);
+  color:			var(--text);
+  text-align:		center;
+  margin:			0px;
+  padding:		    0px;
+  font-family:      'Caskaydia Cove', sans-serif;
+}
+
+#clock {
+  text-align:		left;
+  font-size:		72px;
+  color:			var(--secondary);
+  padding:		    10px;
+}
+
+#search-bar {
+  background-color:	var(--main);
+  color:			var(--text);
+  border-width:     0px;
+  border-bottom:    3px solid var(--secondary);
+  width:			85%;
+  height:			40px;
+  outline:		    none;
+}
+
+.website-collection {
+  display:		    flex;
+  flex-direction:	row;
+  flex-wrap:		wrap;
+  justify-content:	center;
+  align-items:		flex-start;
+  align-content:	flex-start;
+}
+
+.website-collection a {
+  text-decoration:	none;
+  color:			var(--link-colour);
+}
+
+.website-collection a:hover {
+  color:			var(--link-hover);
+}
+
+.website-group {
+  background-color:	var(--complimentary);
+  border-radius:	10px;
+  margin:			10px;
+  padding-left:		10px;
+  padding-right:	10px;
+  padding-bottom:	10px;
+}
