@@ -88,16 +88,75 @@ const input = document.getElementById("search-bar");
 input.addEventListener("keyup", (e) => {
   query = e.target.value;
   refreshWebsites(query);
-  console.log(e);
   if (e.key == "Enter") {
     if (query.startsWith(":")) {
-      commandHandler(query);
+      var command = query.substring(1);
+      commandHandler(command);
     } else {
-      // Otherwise redirect to duckduckgo
-      window.location.href = `https://duckduckgo.com/?q=${query}`;
+      let encoded = encodeURI(query);
+      window.location.href = `https://duckduckgo.com/?q=${encoded}`;
     }
   }
 });
 
+const commandHandler = (command) => {
+  let [cmd, args] = command.split(" ", 2);
+  cmd = cmd.toLowerCase();
+  let encoded = null;
+  switch (cmd) {
+    case "github":
+    case "gh":
+      if (args === undefined) {
+        window.location.href = "https://github.com";
+        break;
+      }
+      window.location.href = `https://github.com/${args}`;
+      break;
+    case "ghsearch":
+      if (args === undefined) {
+        window.location.href = "https://github.com/search";
+        break;
+      }
+      encoded = encodeURI(args);
+      window.location.href = `https://github.com/search/?q+${encoded}`;
+    case "youtube":
+    case "yt":
+      if (args === undefined) {
+        window.location.href = "https://youtube.com";
+        break;
+      }
+      encoded = encodeURI(args);
+      window.location.href = `https://youtube.com/results?search_query=${encoded}`;
+      break;
+    case "subreddit":
+    case "sub":
+    case "r/":
+      if (args === undefined) {
+        window.location.href = "https://reddit.com";
+        break;
+      }
+      window.location.href = `https://reddit.com/r/${args}`;
+      break;
+    case "reddit":
+    case "rd":
+      if (args === undefined) {
+        window.location.href = "https://reddit.com/search";
+        break;
+      }
+      encoded = encodeURI(args);
+      window.location.href = `https://reddit.com/search/?q=${encoded}`;
+      break;
+    default:
+      showError(`Command not found: ${cmd}`);
+      break;
+  }
+};
+
+const showError = (error) => {
+  let error_element = document.getElementById("error");
+  error_element.innerText = error;
+};
+
 refreshWebsites();
 showTime();
+input.focus()
