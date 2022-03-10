@@ -1,164 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
+    <head>
 		<title>Home Page</title>
 		<meta charset="UTF-8"/>
-                <link rel="preconnect" href="https://fonts.googleapis.com">
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-                <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"> 
-		<style>
-			:root {
-				--main: 		#0c0912;
-				--secondary:		#e566ff;
-				--text:			#ffffff;
-				--link-colour:		#fc35bc;
-				--complimentary:	#120e1c;
-				--link-hover:		#6824af;
-			}
-
-			::placeholder {
-				opacity: 		0.5;
-			}
-
-			body {
-				background-color: 	var(--main);
-				color:			var(--text);
-				text-align:		center;
-				margin			0px;
-				padding:		0px;
-                                font-family:            'Source Sans Pro', sans-serif;
-			}
-
-			#clock {
-				text-align:		left;
-				font-size:		72px;
-				color:			var(--secondary);
-				padding:		10px;
-			}
-
-			#search {
-				display:		inline-block;
-				width:			100%;
-			}
-
-			.search-bar {
-				background-color:	var(--main);
-				color:			var(--text);
-				border-width:		3px;
-				border-color:		var(--secondary);
-				border-radius:		10px;
-				width:			80%;
-				height:			20px;
-				outline:		none;
-			}
-
-			.website-collection {
-				display:		flex;
-				flex-direction:		row;
-				flex-wrap:		wrap;
-				justify-content:	center;
-				align-items:		flex-start;
-				align-content:		flex-start;
-			}
-
-			.website-collection a {
-				text-decoration:	none;
-				color:			var(--link-colour);
-			}
-			
-			.website-collection a:hover {
-				color:			var(--link-hover);
-			}
-
-			.website-group {
-				background-color:	var(--complimentary);
-				border-radius:		10px;
-				margin:			10px;
-				padding-left:		10px;
-				padding-right:		10px;
-				padding-bottom:		10px;
-			}
-		</style>
+        <link href="style.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
 		<div id="clock" class="clock"></div>
 		<br>
-		<form method="get" id="search" action="https://duckduckgo.com/">
-			<input class="search-bar" type="text" name="q" maxlenght="255" placeholder="Search the Internet"/>
-		</form>
+        <input id="search-bar" type="text" name="q" maxlenght="255" placeholder="Search the Internet"/>
 		<br/><br/>
 		<div id="website-collection" class="website-collection"></div>
-		<script>
-			let website_collection = document.getElementById("website-collection");
-			let data = `
-			Github
-			Github | https://github.com/
-			Pycord | https://github.com/Pycord-Development/pycord/
-			PSUP | https://github.com/EnokiUN/psup/
-			Rich | https://github.com/Textualize/rich/
-			---
-			Docs
-			Arch Wiki | https://wiki.archlinux.org/
-			Python | https://docs.python.org/
-            Rust | https://docs.rust-lang.org/
-			Pycord | https://docs.pycord.dev/
-			Typescript | https://typescriptlang.org/docs/
-                        MDN | https://developer.mozilla.org/en-US/
-			Django | https://docs.djangoproject.com/
-			Pycord (Guide) | https://namantech.me/pycord/
-			Qtile | http://docs.qtile.org/
-			Oh My Zsh | https://github.com/ohmyzsh/ohmyzsh/
-			Vim | https://vim.org/docs.php
-			---
-			Entertainment
-			Youtube | https://youtube.com/
-			Discord | https://discord.com/app/
-			Revolt | https://app.revolt.chat/
-			Reddit | https://reddit.com/
-			9Anime | https://9anime.to/home/
-            itch.io | https://itch.io/
-			---
-			Useful Websites
-            Stackoverflow | https://stackoverflow.com/
-			AUR | https://aur.archlinux.org/
-			`.trim().replace(/\t/g, "");
-
-			let groups = data.split("---");
-			for (let i in groups) {
-				let div_content = "<div class=\"website-group\">"
-				let group = groups[i].trim().split("\n");
-				let title = group[0].trim();
-				div_content += `<h3>${title}</h3>`;
-				for (let x in group ) {
-					if ( x > 0 ) {
-						let link = group[x].split('|');
-						let name = link[0].trim();
-						let url = link[1].trim();
-						div_content += `<a href="${url}">${name}</a><br>`;
-					}
-				}
-				div_content += "</div>";
-				console.log(div_content);
-				website_collection.innerHTML += div_content;
-			}
-
-			function showTime(){
-				let date = new Date();
-				let h = date.getHours();
-				let m = date.getMinutes();
-				let s = date.getSeconds();
-				
-				if (s < 10) { s = `0${s}`; }
-				if (m < 10) { m = `0${m}`; }				
-
-				let time = `${h}:${m}:${s}`;
-				let clock = document.getElementById("clock");
-				clock.innerText = time;
-		
-				setTimeout(showTime, 1000); 
-			}
-
-			showTime();
-		</script>
-	</body>
+        <script src="script.js"></script>
+    </body>
 </html>
