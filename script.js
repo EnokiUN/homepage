@@ -145,6 +145,24 @@ const commandHandler = (command) => {
       encoded = encodeURI(args);
       window.location.href = `https://reddit.com/search/?q=${encoded}`;
       break;
+    case "stackoverflow":
+    case "so":
+      if (args === undefined) {
+        window.location.href = "https://stackoverflow.com";
+        break;
+      }
+      encoded = encodeURI(args);
+      window.location.href = `https://stackoverflow.com/search?q=${encoded}`;
+      break;
+    case "aur":
+    case "arch":
+      if (args === undefined) {
+        window.location.href = "https://aur.archlinux.org";
+        break;
+      }
+      encoded = encodeURI(args);
+      window.location.href = `https://aur.archlinux.org/packages?K=${encoded}`;
+      break;
     default:
       showError(`Command not found: ${cmd}`);
       break;
