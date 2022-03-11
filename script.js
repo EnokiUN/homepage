@@ -19,6 +19,7 @@ Revolt | https://app.revolt.chat/
 Reddit | https://reddit.com/
 9Anime | https://9anime.to/home/
 itch.io | https://itch.io/
+4chan | https://4chan.org/
 ---
 Useful Websites
 Stackoverflow | https://stackoverflow.com/
