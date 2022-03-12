@@ -92,6 +92,7 @@ input.addEventListener("keyup", (e) => {
       var command = query.substring(1);
       commandHandler(command);
     } else {
+      let encoded = encodeURI(query);
       window.location.href = `https://duckduckgo.com/?q=${encoded}`;
     }
   }
