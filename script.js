@@ -100,39 +100,43 @@ input.addEventListener("keyup", (e) => {
 
 const commandHandler = (command) => {
   let idx = command.indexOf(" ");
-  let cmd = command.substring(0, idx);
-  let args = command.substring(idx + 1);
+  if ( idx === -1) {
+    var cmd = command;
+    var args = "";
+  } else {
+    var cmd = command.substring(0, idx);
+    var args = command.substring(idx + 1);
+  }
   cmd = cmd.toLowerCase();
-  let encoded = null;
   // TODO: Add more commands
   switch (cmd) {
     case "github":
     case "gh":
-      if (args === undefined) {
+      if (args === "") {
         window.location.href = "https://github.com";
         break;
       }
       window.location.href = `https://github.com/${args}`;
       break;
     case "ghsearch":
-      if (args === undefined) {
+      if (args === "") {
         window.location.href = "https://github.com/search";
         break;
       }
-      encoded = encodeURI(args);
+      var encoded = encodeURI(args);
       window.location.href = `https://github.com/search/?q+${encoded}`;
     case "youtube":
     case "yt":
-      if (args === undefined) {
+      if (args === "") {
         window.location.href = "https://youtube.com";
         break;
       }
-      encoded = encodeURI(args);
+      var encoded = encodeURI(args);
       window.location.href = `https://youtube.com/results?search_query=${encoded}`;
       break;
     case "subreddit":
     case "sub":
-      if (args === undefined) {
+      if (args === "") {
         window.location.href = "https://reddit.com/search";
         break;
       }
@@ -140,38 +144,40 @@ const commandHandler = (command) => {
       break;
     case "reddit":
     case "rd":
-      if (args === undefined) {
+      if (args === "") {
         window.location.href = "https://reddit.com";
         break;
       }
-      encoded = encodeURI(args);
+      var encoded = encodeURI(args);
       window.location.href = `https://reddit.com/search/?q=${encoded}`;
       break;
     case "stackoverflow":
     case "so":
-      if (args === undefined) {
+      if (args === "") {
         window.location.href = "https://stackoverflow.com";
         break;
       }
-      encoded = encodeURI(args);
+      var encoded = encodeURI(args);
       window.location.href = `https://stackoverflow.com/search?q=${encoded}`;
       break;
     case "aur":
     case "arch":
-      if (args === undefined) {
+      if (args === "") {
         window.location.href = "https://aur.archlinux.org";
         break;
       }
-      encoded = encodeURI(args);
+      var encoded = encodeURI(args);
       window.location.href = `https://aur.archlinux.org/packages?K=${encoded}`;
       break;
     default:
+      console.log(cmd)
       showError(`Command not found: ${cmd}`);
       break;
   }
 };
 
 const showError = (error) => {
+  console.log(error);
   let error_element = document.getElementById("error");
   if (error_element.style.display === "") {
     error_element.style.display = "block";
