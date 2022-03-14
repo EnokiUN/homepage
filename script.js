@@ -4,6 +4,7 @@ Github
 Github | https://github.com/
 Pycord | https://github.com/Pycord-Development/pycord/
 Homepage | https://github.com/EnokiUN/homepage/
+Voltage | https://github.com/EnokiUN/pyvolt
 ---
 Docs
 Arch Wiki | https://wiki.archlinux.org/
