@@ -25,6 +25,11 @@ itch.io | https://itch.io/
 Useful Websites
 Stackoverflow | https://stackoverflow.com/
 AUR | https://aur.archlinux.org/
+crates.io | https://crates.io/
+lib.rs | https://lib.rs/
+pypi | https://pypi.org/
+npm | https://npmjs.com/
+Rust Cookbook | https://rust-lang-nursery.github.io/rust-cookbook/
 `.trim().replace(/\t/g, "");
 let groups = data.split("---");
 
