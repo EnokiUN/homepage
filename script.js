@@ -93,7 +93,8 @@ input.addEventListener("keyup", (e) => {
   query = e.target.value;
   refreshWebsites(query);
   // I have to check for "Go" to make it work on mobile.
-  if (e.key == "Enter" || e.key == "Go") {
+  // Actually screw mobile.
+  if (e.key == "Enter") {
     if (query.startsWith(":")) {
       var command = query.substring(1);
       commandHandler(command);
